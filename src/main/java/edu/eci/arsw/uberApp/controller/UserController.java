@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.eci.arsw.uberApp.model.App;
 import edu.eci.arsw.uberApp.model.Customer;
 import edu.eci.arsw.uberApp.persistence.UberAppApplicationPersistenceException;
 import edu.eci.arsw.uberApp.services.UserServices;
@@ -66,16 +65,6 @@ public class UserController {
         }
     }
 
-    @GetMapping(path = "/{user}/apps")
-    public ResponseEntity<?> getAppsByEmail(@PathVariable("user") String email){
-        try{
-            
-            return new ResponseEntity<>(userServices.findAppsByEmail(email),HttpStatus.ACCEPTED);
-        }catch (UberAppApplicationPersistenceException ex){
-            return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
-        }
-    }
-
     
     @PostMapping
     public ResponseEntity<?> addNewUser(@RequestBody Customer customer){
@@ -87,22 +76,10 @@ public class UserController {
         }
     }
 
-    @RequestMapping(path = "/{user}/apps",method = RequestMethod.PUT)
-    public ResponseEntity<?> updateApp(@PathVariable("user") String user,@RequestBody App app){
-        try{
-            userServices.updateApps(user,app);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        }catch (UberAppApplicationPersistenceException ex){
-            return new ResponseEntity<>(ex.getMessage(),HttpStatus.BAD_REQUEST);
-        }
-    }
-
-
-
-    @RequestMapping(path = "/{user}",method = RequestMethod.PUT)	
+    @PutMapping(path = "/{user}")
     public ResponseEntity<?> updateUser(@PathVariable("user") String user,@Valid @RequestBody Customer customer){
         try {
-            
+            //System.out.println(customer.getEmail());
             userServices.updateUser(user,customer);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception ex) {
@@ -110,5 +87,4 @@ public class UserController {
         }        
 
     }
-
 }

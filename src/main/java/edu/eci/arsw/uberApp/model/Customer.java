@@ -37,9 +37,6 @@ public class Customer implements Serializable {
     @Column
     private String password;
     
-    
-    @OneToMany(mappedBy = "customer")
-    private List<App> apps;
 
     public String getEmail() {
         return email;
@@ -89,12 +86,5 @@ public class Customer implements Serializable {
         this.cellPhone = cellPhone;
     }
 
-    public List<App> getApps() {
-        return apps;
-    }
-
-    public void setApps(List<App> apps) {
-        this.apps = apps;
-    }
 }
 
