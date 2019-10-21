@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -23,11 +22,6 @@ public class DriverServicesImpl implements DriverServices {
     private DriverRepository driverRepository;
 
     @Autowired
-    private PasswordEncoder bcryptPasswordEncoder;
-
-   
-
-    @Autowired
     private CarRepository carRepository;
 
     @Override
@@ -43,9 +37,6 @@ public class DriverServicesImpl implements DriverServices {
         if (optionalDriver.isPresent()) {
             throw new UberAppApplicationPersistenceException(UberAppApplicationPersistenceException.DRIVER_ALREDY_EXISTS);
         } else {
-            String rawPassword = driver.getPassword();
-            String encodedPassword = bcryptPasswordEncoder.encode(rawPassword);
-            driver.setPassword(encodedPassword);
             driverRepository.save(driver);
         }
 

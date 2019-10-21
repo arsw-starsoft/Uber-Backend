@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import edu.eci.arsw.uberApp.model.Customer;
@@ -20,8 +19,6 @@ public class UserServicesImpl implements UserServices {
     private UserRepository userRepository;
 
 
-    @Autowired
-    private PasswordEncoder bcryptPasswordEncoder;
 
     @Override
     public List<Customer> getAllUsers() throws UberAppApplicationPersistenceException {
@@ -34,9 +31,6 @@ public class UserServicesImpl implements UserServices {
         if (optionalCustomer.isPresent()) {
             throw new UberAppApplicationPersistenceException(UberAppApplicationPersistenceException.CUSTOMER_ALREDY_EXISTS);
         } else {
-            String rawPassword = customer.getPassword();
-            String encodedPassword = bcryptPasswordEncoder.encode(rawPassword);
-            customer.setPassword(encodedPassword);
             userRepository.save(customer);
         }
 
