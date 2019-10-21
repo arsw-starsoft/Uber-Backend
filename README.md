@@ -9,7 +9,7 @@
 
 
 ## Arquitectura de la Aplicación
-La arquitectura está descrita en el siguiente [link.](https://arsw-starsoft.github.io/#arquitectura-backend---synchdrive)
+La arquitectura está descrita en el siguiente [link.](https://arsw-starsoft.github.io/#arquitectura-backend---uber)
 
 ## Despliegue
-El backend se encuentra en https://synchdrive.herokuapp.com
+El Uber backend se encuentra en https://uber-backend-starsoft.herokuapp.com/
