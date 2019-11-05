@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.eci.arsw.uberApp.model.Car;
+import edu.eci.arsw.uberApp.model.Coordinate;
 import edu.eci.arsw.uberApp.persistence.UberAppApplicationPersistenceException;
 import edu.eci.arsw.uberApp.services.CarServices;
 
@@ -32,6 +33,10 @@ public class CarController {
         car.setPlate("123ABC");
         car.setModel("Z");
         car.setSeats(5);
+        Coordinate cor = new Coordinate();
+        cor.setLatitude(Double.valueOf(2));
+        cor.setLongitude(Double.valueOf(2));
+        car.setCoordinate(cor);
         carServices.saveCar(car);
         return new ResponseEntity<>(car, HttpStatus.CREATED);
     }
