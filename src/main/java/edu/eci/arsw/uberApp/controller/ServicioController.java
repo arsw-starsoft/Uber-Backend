@@ -45,7 +45,7 @@ public class ServicioController {
     }
 
 
-    @GetMapping(path = "/generate")
+    @PostMapping(path = "/generate")
     public ResponseEntity<?> getGenerateService(@RequestBody Servicio service){
         
         Servicio newservicio = servicioServices.getGenerateService(service);
