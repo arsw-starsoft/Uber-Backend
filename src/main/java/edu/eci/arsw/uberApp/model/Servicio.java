@@ -2,12 +2,14 @@ package edu.eci.arsw.uberApp.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 
@@ -34,6 +36,9 @@ public class Servicio implements Serializable {
     
     @ManyToOne
     private Customer customer;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Coordinate coordinate;
 
 
     public Double getPrice() {
@@ -75,6 +80,15 @@ public class Servicio implements Serializable {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
     }
     
     @Override

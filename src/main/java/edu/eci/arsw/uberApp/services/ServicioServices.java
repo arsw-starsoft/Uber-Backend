@@ -11,6 +11,8 @@ public interface ServicioServices {
 
     void saveService(Servicio service);
 
+    Servicio getGenerateService(Servicio service);
+
     
 
 }

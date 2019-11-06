@@ -43,6 +43,15 @@ public class ServicioController {
         List<Servicio> servicios = servicioServices.getAllServices(coordinate);
         return new ResponseEntity<>(servicios,HttpStatus.ACCEPTED);
     }
+
+
+    @GetMapping(path = "/generate")
+    public ResponseEntity<?> getGenerateService(@RequestBody Servicio service){
+        
+        Servicio newservicio = servicioServices.getGenerateService(service);
+        return new ResponseEntity<>(newservicio,HttpStatus.ACCEPTED);
+    }
+    
     
     @PostMapping
     public ResponseEntity<?> addNewApp(@RequestBody Servicio servicio){

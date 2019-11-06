@@ -3,6 +3,7 @@ package edu.eci.arsw.uberApp.services.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,23 @@ public class ServicioServicesImpl implements ServicioServices {
     @Override
     public void saveService(Servicio servicio) {
         serviceRepository.save(servicio);
+    }
+
+    @Override
+    public Servicio getGenerateService(Servicio service) {
+        Double maxPrecio = 50000.0; //pesos
+        Double minPrecio = 2000.0;
+        Double maxDuracion = 50.0; //minutos 
+        Double minDuracion = 5.0;
+        Double maxDistacia = 30.0; // km
+        Double minDistancia = 5.0;
+        Double doublePrecio = (Math.random() * ((maxPrecio - minPrecio) + 1)) + minPrecio;
+        Double doubleDuracion = (Math.random() * ((maxDuracion - minDuracion) + 1)) + minDuracion;
+        Double doubleDistancia = (Math.random() * ((maxDistacia - minDistancia) + 1)) + minDistancia;
+        service.setPrice(doublePrecio);
+        service.setDuration(doubleDuracion);
+        service.setDistance(doubleDistancia);
+        return service;
     }
 
 }
