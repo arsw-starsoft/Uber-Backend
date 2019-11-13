@@ -24,6 +24,9 @@ public class Servicio implements Serializable {
     private Double price;
 
     @Column
+    private Boolean active;
+
+    @Column
     private Double duration;
 
     @Column
@@ -94,5 +97,13 @@ public class Servicio implements Serializable {
     @Override
     public String toString(){
         return "Service {Time: " + duration + ", Price: " + price + ", Distance: " + distance+"}";
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }
