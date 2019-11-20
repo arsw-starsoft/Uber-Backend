@@ -32,6 +32,13 @@ public class Servicio implements Serializable {
     @Column
     private Double distance;
 
+    @Column
+    private String destino;
+
+
+    @Column
+    private Integer idPeticion;
+
    
     @ManyToOne
     private Driver driver;
@@ -105,5 +112,21 @@ public class Servicio implements Serializable {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+    
+    public String getDestino(){
+        return this.destino;
+    }
+
+    public void setDestino(String destino){
+        this.destino = destino;
+    }
+
+    public Integer getIdPeticion(){
+        return this.idPeticion;
+    }
+
+    public void setIdPeticion(Integer idPeticion){
+        this.idPeticion = idPeticion;
     }
 }
