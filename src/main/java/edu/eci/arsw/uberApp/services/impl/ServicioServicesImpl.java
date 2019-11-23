@@ -69,4 +69,12 @@ public class ServicioServicesImpl implements ServicioServices {
         return service;
     }
 
+    @Override
+    public Double getPriceDestino(String destino) {
+        Double maxPrecio = 50000.0;
+        Double minPrecio = 2000.0;
+        Double doublePrecio = (Math.random() * ((maxPrecio - minPrecio) + 1)) + minPrecio;
+        return doublePrecio;
+    }
+
 }

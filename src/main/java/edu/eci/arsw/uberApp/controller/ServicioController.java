@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +50,13 @@ public class ServicioController {
     public ResponseEntity<?> getGenerateService(@RequestBody Servicio service){
         
         Servicio newservicio = servicioServices.getGenerateService(service);
+        return new ResponseEntity<>(newservicio,HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping(path = "/generate/{destino}")
+    public ResponseEntity<?> getGeneratePrice(@PathVariable("destino") String destino){
+        
+        Double newservicio = servicioServices.getPriceDestino(destino);
         return new ResponseEntity<>(newservicio,HttpStatus.ACCEPTED);
     }
     

@@ -13,6 +13,8 @@ public interface ServicioServices {
 
     Servicio getGenerateService(Servicio service);
 
+    Double getPriceDestino(String destino);
+
     
 
 }
