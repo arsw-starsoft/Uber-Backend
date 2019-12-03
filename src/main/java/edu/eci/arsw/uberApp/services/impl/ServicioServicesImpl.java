@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import org.decimal4j.util.DoubleRounder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,9 +64,9 @@ public class ServicioServicesImpl implements ServicioServices {
         Double doublePrecio = (Math.random() * ((maxPrecio - minPrecio) + 1)) + minPrecio;
         Double doubleDuracion = (Math.random() * ((maxDuracion - minDuracion) + 1)) + minDuracion;
         Double doubleDistancia = (Math.random() * ((maxDistacia - minDistancia) + 1)) + minDistancia;
-        service.setPrice(doublePrecio);
-        service.setDuration(doubleDuracion);
-        service.setDistance(doubleDistancia);
+        service.setPrice(DoubleRounder.round(doublePrecio,2));
+        service.setDuration(DoubleRounder.round(doubleDuracion,2));
+        service.setDistance(DoubleRounder.round(doubleDistancia,2));
         return service;
     }
 
